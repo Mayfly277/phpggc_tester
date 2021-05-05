@@ -27,7 +27,7 @@ def delete_file(file):
 print("[blue] Start %s test[/blue]" % package)
 delete_file('composer.json')
 delete_file('composer.lock')
-result = subprocess.run(['composer', 'show', '-a', package], stdout=subprocess.PIPE)
+result = subprocess.run(['php', composer_bin, 'show', '-a', package], stdout=subprocess.PIPE)
 text = result.stdout.decode('utf-8')
 versions = re.search(r'versions :(.*)\ntype', text).group(1)
 print(versions)
